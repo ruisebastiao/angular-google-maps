@@ -1,11 +1,11 @@
 {
-  "name": "@agm/_dev",
-  "private": true,
-  "version": "1.0.0-beta.2",
+  "name": "@ruisebastiao/agm_dev",
+  "private": false,
+  "version": "1.0.0-beta.4",
   "description": "Angular 2+ components for Google Maps",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SebastianM/angular-google-maps.git"
+    "url": "https://github.com/ruisebastiao/angular-google-maps.git"
   },
   "keywords": [
     "angular",

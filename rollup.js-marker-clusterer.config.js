@@ -15,8 +15,8 @@ export default {
     'rxjs/operator/toPromise': 'Rx.Observable.prototype',
     'rxjs/Observable': 'Rx',
     'rxjs/Rx': 'Rx',
-    '@agm/core': 'ngmaps.core'
+    '@ruisebastiao/core': 'ngmaps.core'
   },
   context: 'window',
-  external: ['rxjs', '@angular/core', 'rxjs/Observable', '@agm/core', 'js-marker-clusterer']
+  external: ['rxjs', '@angular/core', 'rxjs/Observable', '@ruisebastiao/core', 'js-marker-clusterer']
 }
