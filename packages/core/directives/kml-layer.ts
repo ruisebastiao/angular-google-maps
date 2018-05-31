@@ -1,7 +1,11 @@
+import { Observable } from 'rxjs/Observable';
+import { LatLngBounds } from '@ruisebastiao/core/services/google-maps-types';
 import { Directive, EventEmitter, OnChanges, OnDestroy, OnInit, SimpleChanges, Input, Output } from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import 'rxjs/add/operator/share';
 
-import {KmlMouseEvent} from './../services/google-maps-types';
+import { KmlMouseEvent, KmlLayer } from './../services/google-maps-types';
 import {KmlLayerManager} from './../services/managers/kml-layer-manager';
 
 let layerId = 0;
@@ -13,6 +17,8 @@ export class AgmKmlLayer implements OnInit, OnDestroy, OnChanges {
   private _addedToManager: boolean = false;
   private _id: string = (layerId++).toString();
   private _subscriptions: Subscription[] = [];
+  private _layer: BehaviorSubject<KmlLayer> = new BehaviorSubject(null);
+
   private static _kmlLayerOptions: string[] =
       ['clickable', 'preserveViewport', 'screenOverlays', 'suppressInfoWindows', 'url', 'zIndex'];
 
@@ -59,6 +65,10 @@ export class AgmKmlLayer implements OnInit, OnDestroy, OnChanges {
    */
   @Output() defaultViewportChange: EventEmitter<void> = new EventEmitter<void>();
 
+  get layer(): Observable<KmlLayer>{
+    return this._layer.asObservable().share();
+  }
+
   /**
    * This event is fired when the KML layer has finished loading.
    * At this point it is safe to read the status property to determine if the layer loaded
@@ -72,7 +82,10 @@ export class AgmKmlLayer implements OnInit, OnDestroy, OnChanges {
     if (this._addedToManager) {
       return;
     }
-    this._manager.addKmlLayer(this);
+    this._subscriptions.push(this._manager.addKmlLayer(this).subscribe((layer) => {
+      this._layer.next(layer);
+    }));
+
     this._addedToManager = true;
     this._addEventListeners();
   }

@@ -1,6 +1,8 @@
 import {Injectable, NgZone} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Observer} from 'rxjs/Observer';
+import { of } from 'rxjs/observable/of';
+import { fromPromise } from 'rxjs/observable/fromPromise';
 
 import {AgmKmlLayer} from './../../directives/kml-layer';
 import {GoogleMapsAPIWrapper} from './../google-maps-api-wrapper';
@@ -21,9 +23,9 @@ export class KmlLayerManager {
   /**
    * Adds a new KML Layer to the map.
    */
-  addKmlLayer(layer: AgmKmlLayer) {
+  addKmlLayer(layer: AgmKmlLayer): Observable<KmlLayer> {
     const newLayer = this._wrapper.getNativeMap().then(m => {
-      return new google.maps.KmlLayer(<KmlLayerOptions>{
+      const kmllayer = new google.maps.KmlLayer(<KmlLayerOptions>{
         clickable: layer.clickable,
         map: m,
         preserveViewport: layer.preserveViewport,
@@ -32,8 +34,11 @@ export class KmlLayerManager {
         url: layer.url,
         zIndex: layer.zIndex
       });
+      return kmllayer;
     });
+
     this._layers.set(layer, newLayer);
+    return fromPromise(newLayer);
   }
 
   setOptions(layer: AgmKmlLayer, options: KmlLayerOptions) {

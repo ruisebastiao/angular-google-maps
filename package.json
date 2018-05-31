@@ -1,7 +1,7 @@
 {
   "name": "@ruisebastiao/agm_dev",
   "private": false,
-  "version": "1.0.0-beta.5",
+  "version": "2.0.2",
   "description": "Angular 2+ components for Google Maps",
   "repository": {
     "type": "git",
