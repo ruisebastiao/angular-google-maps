@@ -1,9 +1,9 @@
 import { Observable } from 'rxjs/Observable';
 import { LatLngBounds } from '@ruisebastiao/core/services/google-maps-types';
 import { Directive, EventEmitter, OnChanges, OnDestroy, OnInit, SimpleChanges, Input, Output } from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/share';
+import {Subscription} from 'rxjs';
 
 import { KmlMouseEvent, KmlLayer } from './../services/google-maps-types';
 import {KmlLayerManager} from './../services/managers/kml-layer-manager';

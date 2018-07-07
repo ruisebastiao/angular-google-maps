@@ -21,5 +21,5 @@ export default {
     'rxjs/Rx': 'Rx'
   },
   context: 'window',
-  external: ['rxjs', '@angular/core', 'rxjs/Observable', 'js-marker-clusterer']
+  external: ['rxjs', '@angular/core']
 }

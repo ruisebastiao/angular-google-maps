@@ -1,8 +1,7 @@
 import {Injectable, NgZone} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {Observer} from 'rxjs/Observer';
 import { of } from 'rxjs/observable/of';
 import { fromPromise } from 'rxjs/observable/fromPromise';
+import {Observable, Observer} from 'rxjs';
 
 import {AgmKmlLayer} from './../../directives/kml-layer';
 import {GoogleMapsAPIWrapper} from './../google-maps-api-wrapper';
@@ -56,7 +55,7 @@ export class KmlLayerManager {
    * Creates a Google Maps event listener for the given KmlLayer as an Observable
    */
   createEventObservable<T>(eventName: string, layer: AgmKmlLayer): Observable<T> {
-    return Observable.create((observer: Observer<T>) => {
+    return new Observable((observer: Observer<T>) => {
       this._layers.get(layer).then((m: KmlLayer) => {
         m.addListener(eventName, (e: T) => this._zone.run(() => observer.next(e)));
       });
