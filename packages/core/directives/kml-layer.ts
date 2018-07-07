@@ -65,7 +65,7 @@ export class AgmKmlLayer implements OnInit, OnDestroy, OnChanges {
    */
   @Output() defaultViewportChange: EventEmitter<void> = new EventEmitter<void>();
 
-  get layer(): Observable<KmlLayer>{
+  public get layer(): Observable<KmlLayer>{
     return this._layer.asObservable().share();
   }
 
