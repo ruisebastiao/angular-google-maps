@@ -1,26 +1,4 @@
 export default {
-<<<<<<< HEAD
-  entry: 'dist/js-marker-clusterer/index.js',
-  dest: 'dist/js-marker-clusterer/js-marker-clusterer.umd.js',
-  format: 'umd',
-  moduleName: 'ngmaps.jsMarkerClusterer',
-  sourceMap: true,
-  globals: {
-    '@angular/core': 'ng.core',
-    '@angular/common': 'ng.common',
-    '@angular/compiler': 'ng.compiler',
-    '@angular/platform-browser': 'ng.platformBrowser',
-    '@angular/platform-browser-dynamic': 'ng.platformBrowserDynamic',
-    'rxjs/Subject': 'Rx',
-    'rxjs/observable/PromiseObservable': 'Rx',
-    'rxjs/operator/toPromise': 'Rx.Observable.prototype',
-    'rxjs/Observable': 'Rx',
-    'rxjs/Rx': 'Rx',
-    '@ruisebastiao/core': 'ngmaps.core'
-  },
-  context: 'window',
-  external: ['rxjs', '@angular/core', 'rxjs/Observable', '@ruisebastiao/core', 'js-marker-clusterer']
-=======
   input: 'dist/packages/js-marker-clusterer/index.js',
   output: {
     file: 'dist/packages/js-marker-clusterer/js-marker-clusterer.umd.js',
@@ -43,6 +21,5 @@ export default {
     format: 'umd'
   },
   context: 'window',
-  external: ['rxjs', '@angular/core', '@agm/core', 'js-marker-clusterer']
->>>>>>> master
+  external: ['rxjs', '@angular/core', 'rxjs/Observable', '@ruisebastiao/core', 'js-marker-clusterer']
 }

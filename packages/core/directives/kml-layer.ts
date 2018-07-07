@@ -1,9 +1,9 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { LatLngBounds } from '@ruisebastiao/core/services/google-maps-types';
 import { Directive, EventEmitter, OnChanges, OnDestroy, OnInit, SimpleChanges, Input, Output } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import 'rxjs/add/operator/share';
+import { BehaviorSubject } from 'rxjs';
 import {Subscription} from 'rxjs';
+import {  share } from 'rxjs/operators';
 
 import { KmlMouseEvent, KmlLayer } from './../services/google-maps-types';
 import {KmlLayerManager} from './../services/managers/kml-layer-manager';
@@ -66,7 +66,7 @@ export class AgmKmlLayer implements OnInit, OnDestroy, OnChanges {
   @Output() defaultViewportChange: EventEmitter<void> = new EventEmitter<void>();
 
   public get layer(): Observable<KmlLayer>{
-    return this._layer.asObservable().share();
+    return  this._layer.asObservable().pipe(share());
   }
 
   /**

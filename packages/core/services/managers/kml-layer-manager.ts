@@ -1,6 +1,7 @@
 import {Injectable, NgZone} from '@angular/core';
-import { of } from 'rxjs/observable/of';
-import { fromPromise } from 'rxjs/observable/fromPromise';
+
+import {from} from 'rxjs';
+
 import {Observable, Observer} from 'rxjs';
 
 import {AgmKmlLayer} from './../../directives/kml-layer';
@@ -37,7 +38,7 @@ export class KmlLayerManager {
     });
 
     this._layers.set(layer, newLayer);
-    return fromPromise(newLayer);
+    return from(newLayer);
   }
 
   setOptions(layer: AgmKmlLayer, options: KmlLayerOptions) {
