@@ -15,7 +15,7 @@ export default {
       'rxjs/operator/toPromise': 'Rx.Observable.prototype',
       'rxjs/Observable': 'Rx',
       'rxjs/Rx': 'Rx',
-      '@agm/core': 'ngmaps.core'
+      '@ruisebastiao/core': 'ngmaps.core'
     },
     sourceMap: true,
     format: 'umd',
